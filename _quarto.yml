@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: _site
+  resources:
+    - site.json
+    - thumbnail.svg
+
+website:
+  title: "Window Garden"
+  site-url: https://sthudir.github.io/demo-web-quarto/
+  repo-url: https://github.com/sthudiR/demo-web-quarto
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: light.qmd
+        text: Light
+      - href: calendar.qmd
+        text: Calendar
+      - href: watch.qmd
+        text: Watch
+    right:
+      - text: "← Back to Hub"
+        href: https://sthudir.github.io/demo-web-hub/
+      - icon: github
+        href: https://github.com/sthudiR/demo-web-quarto
+        aria-label: View source on GitHub
+  page-footer: "Built with Quarto."
+
+format:
+  html:
+    theme:
+      light: [flatly, tokens.scss]
+      dark: [darkly, tokens.scss]
+    css: tokens.css
+    toc: true

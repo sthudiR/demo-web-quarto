@@ -1,0 +1,36 @@
+---
+title: "How much light?"
+---
+
+Pick the hours of direct sun your window gets and see which plants will be happy.
+
+```{ojs}
+//| echo: false
+viewof hours = Inputs.range([0, 10], {value: 5, step: 0.5, label: "Sun hours"})
+```
+
+```{ojs}
+//| echo: false
+herbs = [
+  {name: "Mint", need: 3}, {name: "Lettuce", need: 3}, {name: "Chives", need: 4},
+  {name: "Parsley", need: 4}, {name: "Basil", need: 6}, {name: "Rosemary", need: 7}, {name: "Tomato", need: 8}
+]
+Plot.plot({
+  marginLeft: 80,
+  x: {label: "Hours of sun needed", domain: [0, 10]},
+  y: {label: null},
+  marks: [
+    Plot.barX(herbs, {y: "name", x: "need", sort: {y: "x"}, fill: d => d.need <= hours ? "#5fb37c" : "#8b98a5"}),
+    Plot.ruleX([hours], {stroke: "#e0a458", strokeWidth: 3}),
+    Plot.text(herbs, {y: "name", x: "need", text: d => d.need <= hours ? "happy" : "needs more sun", dx: 6, textAnchor: "start"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+happy = herbs.filter(d => d.need <= hours).map(d => d.name)
+md`**${happy.length} of ${herbs.length}** plants are happy with ${hours} hours: ${happy.length ? happy.join(", ") : "none yet, try a grow light."}`
+```
+
+Green bars are plants that thrive at your chosen light level. The orange line is your window.

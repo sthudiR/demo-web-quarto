@@ -1,0 +1,17 @@
+---
+title: "Sowing calendar"
+---
+
+When to start each plant indoors (northern hemisphere).
+
+| Month | Sow |
+|---|---|
+| Jan–Feb | Chives, parsley |
+| Mar–Apr | Basil, tomato |
+| May–Jun | Mint cuttings, lettuce |
+| Sep–Oct | Lettuce, rosemary cuttings |
+
+::: {.callout-note}
+This table is plain Markdown. Quarto adds the styling, the search-friendly layout, and a
+light/dark switch (top right).
+:::

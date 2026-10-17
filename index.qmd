@@ -1,0 +1,34 @@
+---
+title: "Window Garden"
+subtitle: "What can you grow on a sill? A friendly guide written in Quarto."
+---
+
+Almost every window can grow something. This tiny guide shows how a single plain-text file
+(`.qmd`) becomes a polished website, with live charts built from small bits of code.
+
+::: {.callout-tip}
+## How to use this site
+Open **Light** and drag the slider to see how many hours of sun a herb needs. Then check the
+**Calendar** for when to sow.
+:::
+
+## Easy starters
+
+| Plant | Light needed | Water |
+|---|---|---|
+| Mint | Part shade | Keep moist |
+| Basil | 6+ hours | Every 2 days |
+| Chives | 4+ hours | Weekly |
+| Lettuce | 3+ hours | Keep moist |
+
+Where do the numbers come from? Right from the page itself: Quarto can run code and show
+the result next to your words.
+
+```{ojs}
+//| echo: true
+plants = [
+  {name: "Mint", hours: 3}, {name: "Basil", hours: 6},
+  {name: "Chives", hours: 4}, {name: "Lettuce", hours: 3}
+]
+html`<p><b>${plants.length} plants</b>, needing ${d3.min(plants, d => d.hours)} to ${d3.max(plants, d => d.hours)} hours of sun.</p>`
+```
