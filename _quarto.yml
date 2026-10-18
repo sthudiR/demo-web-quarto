@@ -4,6 +4,8 @@ project:
   resources:
     - site.json
     - thumbnail.svg
+    - preview.webm
+    - preview.mp4
 
 website:
   title: "Window Garden"
@@ -25,7 +27,6 @@ website:
       - icon: github
         href: https://github.com/sthudiR/demo-web-quarto
         aria-label: View source on GitHub
-  page-footer: "Built with Quarto."
 
 format:
   html:
@@ -34,3 +35,4 @@ format:
       dark: [darkly, tokens.scss]
     css: tokens.css
     toc: true
+    include-after-body: behind.html

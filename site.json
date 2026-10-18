@@ -3,7 +3,22 @@
   "title": "Window Garden",
   "blurb": "A short guide to what grows on a sill, written as plain-text Quarto pages with live, slider-driven charts.",
   "framework": "Quarto",
-  "tags": ["quarto", "lessons", "observable-js"],
+  "tags": [
+    "quarto",
+    "lessons",
+    "observable-js"
+  ],
   "url": "https://sthudir.github.io/demo-web-quarto/",
-  "thumbnail": "thumbnail.svg"
+  "thumbnail": "thumbnail.svg",
+  "kind": "site",
+  "preview": "preview",
+  "metrics": {
+    "size": "2.7 MB",
+    "ready": "1 s",
+    "writes": "Markdown",
+    "build": "25 s",
+    "lines": 132
+  },
+  "goodFor": "Lessons and courses written in plain text, with charts that react.",
+  "notFor": "Heavy custom apps; interactivity comes from embedded code or other tools."
 }
