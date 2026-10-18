@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ripples (p5.js)</title>
+<style>
+  :root{--bg:#f4f7f5;--dot:#1f6b4a;--ring:#e0a458}
+  @media (prefers-color-scheme: dark){:root{--bg:#0f1419;--dot:#5fb37c;--ring:#e0a458}}
+  html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
+  canvas{display:block;width:100%!important;height:100%!important;cursor:crosshair}
+  .hint{position:fixed;left:10px;bottom:8px;font:12px system-ui,sans-serif;color:var(--dot);opacity:.8;pointer-events:none}
+</style></head>
+<body>
+<div class="hint">Move or click</div>
+<script src="../vendor/p5.min.js"></script>
+<script>
+// A grid of dots pushed around by expanding ripples. Ripples start where you move or click.
+let ripples = [], last = 0;
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function setup() { createCanvas(windowWidth, windowHeight); noStroke(); }
+function windowResized() { resizeCanvas(windowWidth, windowHeight); }
+function addRipple(x, y) { ripples.push({ x, y, born: millis() }); if (ripples.length > 8) ripples.shift(); }
+function mouseMoved() { if (millis() - last > 220) { addRipple(mouseX, mouseY); last = millis(); } }
+function mousePressed() { addRipple(mouseX, mouseY); }
+function draw() {
+  background(css('--bg'));
+  if (millis() - last > 2200) { addRipple(random(width), random(height)); last = millis(); }
+  const gap = 22;
+  fill(css('--dot'));
+  for (let x = gap / 2; x < width; x += gap) {
+    for (let y = gap / 2; y < height; y += gap) {
+      let dx = 0, dy = 0, lift = 0;
+      for (const r of ripples) {
+        const age = (millis() - r.born) / 1000;
+        const d = dist(x, y, r.x, r.y);
+        const wave = sin(d * 0.06 - age * 5) * exp(-d * 0.006) * exp(-age * 0.9);
+        lift += wave;
+        dx += ((x - r.x) / (d + 1)) * wave * 7;
+        dy += ((y - r.y) / (d + 1)) * wave * 7;
+      }
+      circle(x + dx, y + dy, constrain(4 + lift * 5, 2, 11));
+    }
+  }
+}
+</script>
+</body></html>

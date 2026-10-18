@@ -1,0 +1,43 @@
+---
+title: "Slides from plain text"
+format:
+  revealjs:
+    theme: dark
+    slide-number: false
+    transition: fade
+    width: 1100
+    height: 650
+resources:
+  - embeds/*
+  - vendor/*
+---
+
+## Plain text in, slides out
+
+Each `##` heading starts a new slide.
+
+```markdown
+## A live sketch
+
+<iframe data-src="embeds/p5-ripples.html"></iframe>
+```
+
+Use the arrow keys to move on.
+
+## A live sketch (p5.js)
+
+<iframe data-src="embeds/p5-ripples.html" title="p5.js ripples" style="width:100%;height:470px;border:0;border-radius:10px"></iframe>
+
+Move the mouse over it.
+
+## ...and 3D (three.js)
+
+<iframe data-src="embeds/three-knot.html" title="three.js knot" style="width:100%;height:470px;border:0;border-radius:10px"></iframe>
+
+Drag it, or change the twists.
+
+## One source, many outputs
+
+The same kind of file can also become a web page, a PDF or a Word document.
+
+That is the whole idea.

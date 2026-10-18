@@ -1,0 +1,54 @@
+---
+title: "Quarto, in one page"
+subtitle: "A notebook, interactive slides and two live sketches, from a handful of plain files."
+format:
+  html:
+    toc: false
+    css: showcase.css
+resources:
+  - embeds/*
+  - vendor/*
+---
+
+::: {.calm}
+Everything on this page comes from the `showcase/` folder. Delete the folder and the page is gone; the rest of the site does not change.
+:::
+
+## 1. A notebook
+
+Write Python in a notebook. Quarto shows the code and its result right in the page.
+
+{{< embed notebook.ipynb#fig-growth echo=true >}}
+
+::: {.src}
+Source: `showcase/notebook.ipynb`
+:::
+
+## 2. Interactive slides
+
+Slides written as plain text, with live sketches inside them. Click the slide, then use the arrow keys.
+
+::: {.frame .r16x9}
+<iframe src="slides.html" title="Interactive slides" loading="lazy"></iframe>
+:::
+
+::: {.src}
+Source: `showcase/slides.qmd` &middot; [open full screen](slides.html)
+:::
+
+## 3. Live sketches
+
+Two small pieces that live in the page: move your mouse over the left one, drag the right one.
+
+::: {.two}
+::: {.frame .r1x1}
+<iframe src="embeds/p5-ripples.html" title="p5.js ripples" loading="lazy"></iframe>
+:::
+::: {.frame .r1x1}
+<iframe src="embeds/three-knot.html" title="three.js knot" loading="lazy"></iframe>
+:::
+:::
+
+::: {.src}
+Sources: `showcase/embeds/p5-ripples.html` (p5.js) and `showcase/embeds/three-knot.html` (three.js)
+:::

@@ -8,6 +8,9 @@
 - `tokens.css`, `tokens.scss`: shared demo-web design tokens and theme tweaks.
 - `site.json`, `thumbnail.svg`: what the hub reads; listed under `resources` in `_quarto.yml` so Quarto copies them to the output root.
 
+## Showcase page
+`showcase/` holds one extra page, "Quarto, in one page": an embedded notebook, interactive slides and two live sketches (p5.js and three.js). It is self-contained; see `showcase/README.md`. To remove it, delete the folder and the Showcase entry in `_quarto.yml`.
+
 ## Run locally
 Install [Quarto](https://quarto.org/docs/get-started/) (1.10.x), then:
 ```
