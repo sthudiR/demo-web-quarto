@@ -29,3 +29,6 @@ Quarto writes relative links, so the site works under `/demo-web-quarto/` withou
 
 ## Adding Python
 For real Python cells, add `jupyter: python3` and a `requirements.txt`, and add `setup-python` + `pip install` steps to the workflow before `quarto render`.
+
+## Licence
+Public domain (CC0). Everything here is made up for a demo; use and share it freely. See `LICENSE`.
