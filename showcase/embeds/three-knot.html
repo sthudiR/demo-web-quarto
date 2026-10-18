@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knot (three.js)</title>
+<style>
+  :root{--bg:#f4f7f5;--fg:#1b2430}
+  @media (prefers-color-scheme: dark){:root{--bg:#0f1419;--fg:#e6edf3}}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);overflow:hidden;font:13px system-ui,sans-serif}
+  canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+  .ui{position:fixed;left:10px;right:10px;bottom:8px;display:flex;gap:10px;align-items:center}
+  .ui input{flex:1;accent-color:#5fb37c}
+</style></head>
+<body>
+<canvas id="c" aria-label="3D knot. Drag to spin it."></canvas>
+<div class="ui"><label for="twist">Twists</label><input id="twist" type="range" min="2" max="9" step="1" value="3"><span id="out">3</span></div>
+<script type="module">
+import * as THREE from '../vendor/three.module.min.js';
+// A torus knot you can spin by dragging; the slider changes how many times it winds around.
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+camera.position.z = 5.2;
+scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2); sun.position.set(3, 4, 5); scene.add(sun);
+const mat = new THREE.MeshStandardMaterial({ color: 0x5fb37c, roughness: 0.35, metalness: 0.2 });
+let mesh;
+function build(q) {
+  if (mesh) { scene.remove(mesh); mesh.geometry.dispose(); }
+  mesh = new THREE.Mesh(new THREE.TorusKnotGeometry(1.1, 0.32, 220, 24, 2, q), mat);
+  scene.add(mesh);
+}
+build(3);
+const tw = document.getElementById('twist'), out = document.getElementById('out');
+tw.addEventListener('input', () => { out.textContent = tw.value; build(+tw.value); });
+let drag = false, px = 0, py = 0, vx = 0.004, vy = 0.006;
+canvas.addEventListener('pointerdown', (e) => { drag = true; px = e.clientX; py = e.clientY; canvas.setPointerCapture(e.pointerId); canvas.style.cursor = 'grabbing'; });
+canvas.addEventListener('pointerup', () => { drag = false; canvas.style.cursor = 'grab'; });
+canvas.addEventListener('pointermove', (e) => { if (!drag) return; vy = (e.clientX - px) * 0.0015; vx = (e.clientY - py) * 0.0015; px = e.clientX; py = e.clientY; });
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function resize() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); camera.aspect = w / h; camera.updateProjectionMatrix(); }
+addEventListener('resize', resize); resize();
+renderer.setAnimationLoop(() => {
+  if (!reduce || drag) { mesh.rotation.x += vx; mesh.rotation.y += vy; }
+  if (!drag) { vx += (0.004 - vx) * 0.02; vy += (0.006 - vy) * 0.02; }
+  mat.color.setHSL((performance.now() / 12000) % 1, 0.45, 0.5);
+  renderer.render(scene, camera);
+});
+</script>
+</body></html>

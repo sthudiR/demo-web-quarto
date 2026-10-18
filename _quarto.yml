@@ -21,6 +21,8 @@ website:
         text: Calendar
       - href: watch.qmd
         text: Watch
+      - href: showcase/index.qmd
+        text: Showcase
     right:
       - text: "← Back to Hub"
         href: https://sthudir.github.io/demo-web-hub/

@@ -1,0 +1,3 @@
+# The notebook ships with its results saved inside it, so the build never runs Python.
+execute:
+  enabled: false
