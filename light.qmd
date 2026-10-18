@@ -4,6 +4,10 @@ title: "How much light?"
 
 Pick the hours of direct sun your window gets and see which plants will be happy.
 
+::: {.try}
+**Try this:** drag the slider down to 3 hours. Which plants still thrive?
+:::
+
 ```{ojs}
 //| echo: false
 viewof hours = Inputs.range([0, 10], {value: 5, step: 0.5, label: "Sun hours"})
