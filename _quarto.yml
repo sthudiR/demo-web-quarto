@@ -37,4 +37,7 @@ format:
       dark: [darkly, tokens.scss]
     css: tokens.css
     toc: true
+    include-in-header:
+      text: |
+        <script data-goatcounter="https://demo-web.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     include-after-body: behind.html
