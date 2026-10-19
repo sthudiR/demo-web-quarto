@@ -7,3 +7,5 @@ A short clip to go with the guide.
 ::: {.video}
 <iframe src="https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ" title="Window garden video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 :::
+
+*Placeholder video: it's here to show how embedding works in this framework.*
