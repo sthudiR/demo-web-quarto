@@ -13,11 +13,11 @@
   "kind": "site",
   "preview": "preview",
   "metrics": {
-    "size": "2.7 MB",
-    "ready": "1 s",
+    "size": "769 KB",
+    "ready": "0.4 s",
     "writes": "Markdown",
-    "build": "25 s",
-    "lines": 132
+    "build": "27 s",
+    "lines": 334
   },
   "goodFor": "Lessons and courses written in plain text, with charts that react.",
   "notFor": "Heavy custom apps; interactivity comes from embedded code or other tools."
